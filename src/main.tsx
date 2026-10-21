@@ -2,6 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 import { I18nProvider } from './i18n'
+import { createHandLandmarker } from './lib/mediapipe/handLandmarker'
+import { registerMediaPipeCache } from './lib/mediapipe/cacheRegistration'
 import '@fontsource/manrope/latin-400.css'
 import '@fontsource/manrope/latin-600.css'
 import '@fontsource/manrope/latin-700.css'
@@ -16,3 +18,11 @@ createRoot(document.getElementById('root')!).render(
     </I18nProvider>
   </StrictMode>,
 )
+
+void registerMediaPipeCache()
+  .catch(() => undefined)
+  .finally(() => {
+    const preload = () => { void createHandLandmarker().catch(() => undefined) }
+    if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(preload, { timeout: 1200 })
+    else globalThis.setTimeout(preload, 400)
+  })

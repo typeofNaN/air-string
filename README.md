@@ -140,6 +140,16 @@ src/config/gesture.ts
 
 仓库中的 `hand_landmarker.task` SHA-256 为 `fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1`，升级模型时应同步更新并重新验证该值。
 
+应用会在页面空闲时提前初始化 Hand Landmarker，并使用 Service Worker 长期缓存实际用到的模型与 WASM。首次访问仍需要下载资源，后续访问会直接使用本地缓存。
+
+如果 GitHub Pages 在目标网络中较慢，可将 `public/mediapipe/` 同步到国内对象存储或 CDN，并在构建时指定资源根地址：
+
+```bash
+VITE_MEDIAPIPE_ASSET_BASE_URL=https://static.example.cn/air-string pnpm build
+```
+
+该地址需要允许跨域访问，并建议为模型和 WASM 设置长期缓存（例如 `Cache-Control: public, max-age=31536000, immutable`）。更换资源内容时应同步修改文件名或 `public/mediapipe-sw.js` 中的缓存版本。
+
 ## 调试
 
 在右侧控制面板展开“识别调试”，可以查看：
