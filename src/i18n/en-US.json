@@ -1,0 +1,58 @@
+{
+  "nav.tutorial": "Guide",
+  "nav.language": "English",
+  "nav.github": "GitHub",
+  "nav.free": "Free play",
+  "nav.practice": "Practice",
+  "camera.title": "Live gestures",
+  "camera.landmarks": "Landmarks",
+  "camera.empty": "Your camera preview will appear here",
+  "camera.left": "Screen left · Chords",
+  "camera.right": "Screen right · Play",
+  "camera.gesture": "Gesture",
+  "camera.stable": "Stable",
+  "camera.waiting": "Waiting",
+  "camera.ready": "Make a fist, then open",
+  "camera.requesting": "Requesting camera…",
+  "camera.loading": "Loading hand model…",
+  "camera.permissionDenied": "Camera access was denied. Allow it in browser settings, then try again.",
+  "camera.unsupported": "Camera access is unavailable. Use a current Chrome, Edge, or Safari.",
+  "camera.failed": "Camera or hand tracking could not start. Close other camera apps and retry.",
+  "status.position": "Position",
+  "status.rightHand": "Play zone",
+  "status.lastAction": "Last action",
+  "status.ready": "READY",
+  "status.waiting": "WAITING",
+  "action.start": "Start playing",
+  "action.stop": "Stop playing",
+  "guide.left": "Screen left: choose chord 1–6",
+  "guide.right": "Screen right: fist then open, or strum vertically",
+  "guide.customSix": "Thumb + pinky",
+  "tutorial.title": "Play in four steps",
+  "tutorial.1": "Enable your camera",
+  "tutorial.2": "Place both hands in view",
+  "tutorial.3": "Choose chord 1–6 in the screen's left zone",
+  "tutorial.4": "In the right zone, make a fist then open your hand",
+  "tutorial.note": "Position 6 uses 🤙: extend only your thumb and pinky.",
+  "tutorial.close": "Got it",
+  "debug.title": "Tracking debug"
+  ,"chord.major": "major chord"
+  ,"chord.minor": "minor chord"
+  ,"control.strum": "Strum"
+  ,"control.arpeggio": "Arpeggio"
+  ,"control.tempo": "Tempo"
+  ,"control.volume": "Volume"
+  ,"control.auto": "Auto arpeggio"
+  ,"control.autoHint": "Repeat the current chord at the set tempo"
+  ,"practice.song": "Practice song"
+  ,"practice.play": "Start practice"
+  ,"practice.pause": "Pause practice"
+  ,"practice.restart": "Restart"
+  ,"practice.next": "Next chord"
+  ,"song.breeze": "Evening Breeze"
+  ,"song.road": "Open Road"
+  ,"song.glow": "Soft Glow"
+  ,"camera.connected": "Camera connected"
+  ,"camera.disconnected": "Waiting for camera"
+  ,"camera.playHint": "Close your hand, then open to play"
+}

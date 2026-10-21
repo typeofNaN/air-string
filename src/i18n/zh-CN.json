@@ -1,0 +1,58 @@
+{
+  "nav.tutorial": "教程",
+  "nav.language": "中文",
+  "nav.github": "GitHub",
+  "nav.free": "自由弹奏",
+  "nav.practice": "跟弹练习",
+  "camera.title": "实时手势",
+  "camera.landmarks": "关键点",
+  "camera.empty": "摄像头预览将在这里显示",
+  "camera.left": "画面左侧 · 选和弦",
+  "camera.right": "画面右侧 · 弹奏",
+  "camera.gesture": "手势",
+  "camera.stable": "稳定",
+  "camera.waiting": "等待识别",
+  "camera.ready": "握拳后张开弹奏",
+  "camera.requesting": "正在请求摄像头…",
+  "camera.loading": "正在加载手部模型…",
+  "camera.permissionDenied": "无法访问摄像头。请在浏览器设置中允许权限后重试。",
+  "camera.unsupported": "此浏览器不支持摄像头访问。请使用最新版 Chrome、Edge 或 Safari。",
+  "camera.failed": "摄像头或识别模型启动失败。请关闭占用摄像头的其他应用后重试。",
+  "status.position": "当前位置",
+  "status.rightHand": "弹奏区",
+  "status.lastAction": "最近动作",
+  "status.ready": "READY",
+  "status.waiting": "WAITING",
+  "action.start": "开始演奏",
+  "action.stop": "停止演奏",
+  "guide.left": "画面左侧：手势选择 1–6 和弦",
+  "guide.right": "画面右侧：握拳后张开，或上下拨动",
+  "guide.customSix": "拇指 + 小指",
+  "tutorial.title": "四步开始演奏",
+  "tutorial.1": "打开摄像头",
+  "tutorial.2": "将双手放入画面",
+  "tutorial.3": "在画面左侧用 1–6 选择和弦",
+  "tutorial.4": "在画面右侧先握拳，再张开五指弹奏",
+  "tutorial.note": "数字 6 使用 🤙 手势：只伸出拇指和小指。",
+  "tutorial.close": "知道了",
+  "debug.title": "识别调试"
+  ,"chord.major": "大三和弦"
+  ,"chord.minor": "小三和弦"
+  ,"control.strum": "弹和弦"
+  ,"control.arpeggio": "自动分解"
+  ,"control.tempo": "速度"
+  ,"control.volume": "音量"
+  ,"control.auto": "自动分解和弦"
+  ,"control.autoHint": "按照速度循环弹奏当前和弦"
+  ,"practice.song": "示例练习"
+  ,"practice.play": "开始跟弹"
+  ,"practice.pause": "暂停跟弹"
+  ,"practice.restart": "重新开始"
+  ,"practice.next": "下一和弦"
+  ,"song.breeze": "晚风练习"
+  ,"song.road": "公路练习"
+  ,"song.glow": "柔光练习"
+  ,"camera.connected": "摄像头已连接"
+  ,"camera.disconnected": "等待摄像头"
+  ,"camera.playHint": "握拳后张开弹奏"
+}
