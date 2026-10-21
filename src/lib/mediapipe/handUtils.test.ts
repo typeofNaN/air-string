@@ -2,7 +2,12 @@ import { describe, expect, it } from 'vitest'
 import type { NormalizedLandmark } from '@mediapipe/tasks-vision'
 import { getFingerState } from './handUtils'
 
-const point = (x: number, y: number): NormalizedLandmark => ({ x, y, z: 0, visibility: 1 })
+const point = (x: number, y: number): NormalizedLandmark => ({
+  x,
+  y,
+  z: 0,
+  visibility: 1,
+})
 const hand = () => Array.from({ length: 21 }, () => point(0.5, 0.7))
 
 describe('getFingerState', () => {

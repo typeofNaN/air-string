@@ -1,9 +1,16 @@
-import { Camera, Hand, Music2, X } from 'lucide-react'
+import { Camera, Hand, Music2 } from 'lucide-react'
 import { useI18n } from '../../i18n'
+import { Button } from '../ui/button'
+import { Dialog, DialogContent, DialogTitle } from '../ui/dialog'
 
-export function TutorialDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function TutorialDialog({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) {
   const { t } = useI18n()
-  if (!open) return null
   const steps = [
     [Camera, t('tutorial.1')],
     [Hand, t('tutorial.2')],
@@ -11,14 +18,32 @@ export function TutorialDialog({ open, onClose }: { open: boolean; onClose: () =
     [Music2, t('tutorial.4')],
   ] as const
   return (
-    <div className="dialog-backdrop" role="presentation" onMouseDown={onClose}>
-      <section className="tutorial-dialog" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" onMouseDown={(event) => event.stopPropagation()}>
-        <button className="dialog-close" onClick={onClose} aria-label={t('tutorial.close')}><X /></button>
-        <h2 id="tutorial-title">{t('tutorial.title')}</h2>
-        <div className="tutorial-steps">{steps.map(([Icon, label], index) => <div key={label}><span><Icon /></span><b>0{index + 1}</b><p>{label}</p></div>)}</div>
-        <p className="tutorial-note">{t('tutorial.note')}</p>
-        <button className="dialog-confirm" onClick={onClose}>{t('tutorial.close')}</button>
-      </section>
-    </div>
+    <Dialog
+      open={open}
+      onOpenChange={(next) => {
+        if (!next) onClose()
+      }}
+    >
+      <DialogContent>
+        <DialogTitle className="font-display text-4xl text-forest">
+          {t('tutorial.title')}
+        </DialogTitle>
+        <div className="mt-6 grid grid-cols-4 gap-3 max-sm:grid-cols-1">
+          {steps.map(([Icon, label], index) => (
+            <div key={label} className="rounded-xl border border-line p-4">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-lime">
+                <Icon className="h-4 w-4" />
+              </span>
+              <b className="mt-4 block text-[10px] text-terra">0{index + 1}</b>
+              <p className="mt-2 text-xs">{label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 text-xs text-muted">{t('tutorial.note')}</p>
+        <Button className="mt-5 rounded-full" onClick={onClose}>
+          {t('tutorial.close')}
+        </Button>
+      </DialogContent>
+    </Dialog>
   )
 }

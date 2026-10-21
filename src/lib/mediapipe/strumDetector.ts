@@ -21,7 +21,8 @@ export class StrumDetector {
 
   update(frame: Frame): StrumDirection | null {
     if (!frame.open) {
-      if (frame.closed && frame.timestamp >= this.cooldownUntil) this.fistArmed = true
+      if (frame.closed && frame.timestamp >= this.cooldownUntil)
+        this.fistArmed = true
       this.state = 'OPEN'
       return null
     }

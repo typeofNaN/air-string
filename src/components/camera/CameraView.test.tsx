@@ -33,11 +33,24 @@ describe('CameraView strum feedback', () => {
   it('offers a stop action while the camera is active', () => {
     const onStop = vi.fn()
     const props = {
-      videoRef: createRef<HTMLVideoElement>(), canvasRef: createRef<HTMLCanvasElement>(), status: 'playing', position: 2,
-      showLandmarks: true, onToggleLandmarks: () => undefined, leftDetected: true, rightDetected: true,
-      onStart: () => undefined, onStop, lastStrum: null, strumPulse: 0,
+      videoRef: createRef<HTMLVideoElement>(),
+      canvasRef: createRef<HTMLCanvasElement>(),
+      status: 'playing',
+      position: 2,
+      showLandmarks: true,
+      onToggleLandmarks: () => undefined,
+      leftDetected: true,
+      rightDetected: true,
+      onStart: () => undefined,
+      onStop,
+      lastStrum: null,
+      strumPulse: 0,
     } as const
-    render(<I18nProvider><CameraView {...props} /></I18nProvider>)
+    render(
+      <I18nProvider>
+        <CameraView {...props} />
+      </I18nProvider>,
+    )
     fireEvent.click(screen.getByRole('button', { name: '停止演奏' }))
     expect(onStop).toHaveBeenCalledOnce()
   })

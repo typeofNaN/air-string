@@ -1,13 +1,25 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
-import { DrawingUtils, HandLandmarker, type HandLandmarkerResult } from '@mediapipe/tasks-vision'
+import {
+  DrawingUtils,
+  HandLandmarker,
+  type HandLandmarkerResult,
+} from '@mediapipe/tasks-vision'
 import { GESTURE_CONFIG } from '../config/gesture'
 import { classifyFingerState } from '../lib/mediapipe/gestureDetector'
 import { GestureStabilizer } from '../lib/mediapipe/gestureStabilizer'
 import { createHandLandmarker } from '../lib/mediapipe/handLandmarker'
 import { assignHandsByVisualZone } from '../lib/mediapipe/handAssignment'
-import { getFingerState, isClosedHand, isOpenHand } from '../lib/mediapipe/handUtils'
+import {
+  getFingerState,
+  isClosedHand,
+  isOpenHand,
+} from '../lib/mediapipe/handUtils'
 import { StrumDetector } from '../lib/mediapipe/strumDetector'
-import type { GuitarPosition, StrumDirection, TrackingMetrics } from '../types/guitar'
+import type {
+  GuitarPosition,
+  StrumDirection,
+  TrackingMetrics,
+} from '../types/guitar'
 
 interface Options {
   enabled: boolean
@@ -83,7 +95,11 @@ export function useHandTracking(options: Options) {
         const loop = (now: number) => {
           if (!active) return
           const video = callbacks.current.videoRef.current
-          if (video && video.readyState >= 2 && now - lastInference >= 1000 / GESTURE_CONFIG.inferenceFPS) {
+          if (
+            video &&
+            video.readyState >= 2 &&
+            now - lastInference >= 1000 / GESTURE_CONFIG.inferenceFPS
+          ) {
             const started = performance.now()
             const result = landmarker.detectForVideo(video, now)
             const inferenceMs = performance.now() - started
@@ -109,14 +125,20 @@ export function useHandTracking(options: Options) {
                 if (stable !== null) callbacks.current.onPosition(stable)
               } else if (index === assignment.playIndex) {
                 rightDetected = true
-                const strum = strummer.update({ y: landmarks[0].y, open: isOpenHand(fingers), closed: isClosedHand(fingers), timestamp: now })
+                const strum = strummer.update({
+                  y: landmarks[0].y,
+                  open: isOpenHand(fingers),
+                  closed: isClosedHand(fingers),
+                  timestamp: now,
+                })
                 if (strum) callbacks.current.onStrum(strum)
               }
             })
             if (!rightDetected) strummer.reset()
             if (now - lastMetrics > 250) {
               const elapsed = now - fpsStarted
-              const fps = elapsed > 0 ? Math.round((frameCount * 1000) / elapsed) : 0
+              const fps =
+                elapsed > 0 ? Math.round((frameCount * 1000) / elapsed) : 0
               setMetrics({
                 fps,
                 inferenceMs: Math.round(inferenceMs),

@@ -9,11 +9,16 @@ describe('practiceReducer', () => {
   })
 
   it('does not advance while paused', () => {
-    expect(practiceReducer(initialPracticeState, { type: 'strum' }).step).toBe(0)
+    expect(practiceReducer(initialPracticeState, { type: 'strum' }).step).toBe(
+      0,
+    )
   })
 
   it('restarts when selecting another exercise', () => {
-    const state = practiceReducer({ ...initialPracticeState, step: 2 }, { type: 'select-song', songIndex: 1 })
+    const state = practiceReducer(
+      { ...initialPracticeState, step: 2 },
+      { type: 'select-song', songIndex: 1 },
+    )
     expect(state).toMatchObject({ songIndex: 1, step: 0, playing: false })
   })
 })

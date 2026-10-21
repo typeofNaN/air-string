@@ -31,7 +31,11 @@ export function useCamera() {
     setStatus('requesting')
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: 'user' },
+        video: {
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          facingMode: 'user',
+        },
         audio: false,
       })
       streamRef.current = stream
@@ -45,7 +49,9 @@ export function useCamera() {
       streamRef.current?.getTracks().forEach((track) => track.stop())
       streamRef.current = null
       if (videoRef.current) videoRef.current.srcObject = null
-      const denied = error instanceof DOMException && (error.name === 'NotAllowedError' || error.name === 'SecurityError')
+      const denied =
+        error instanceof DOMException &&
+        (error.name === 'NotAllowedError' || error.name === 'SecurityError')
       setErrorKey(denied ? 'camera.permissionDenied' : 'camera.failed')
       setStatus('error')
       return false

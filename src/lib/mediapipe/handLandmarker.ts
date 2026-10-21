@@ -1,14 +1,15 @@
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision'
-import { MEDIAPIPE_CONFIG } from '../../config/gesture'
+import { getMediaPipeAssetUrls } from '../../config/mediapipeAssets'
 
 let instancePromise: Promise<HandLandmarker> | null = null
 
 export function createHandLandmarker(): Promise<HandLandmarker> {
   if (!instancePromise) {
-    instancePromise = FilesetResolver.forVisionTasks(MEDIAPIPE_CONFIG.wasmUrl)
+    const assets = getMediaPipeAssetUrls()
+    instancePromise = FilesetResolver.forVisionTasks(assets.wasmUrl)
       .then((vision) =>
         HandLandmarker.createFromOptions(vision, {
-          baseOptions: { modelAssetPath: MEDIAPIPE_CONFIG.modelUrl, delegate: 'GPU' },
+          baseOptions: { modelAssetPath: assets.modelUrl, delegate: 'GPU' },
           runningMode: 'VIDEO',
           numHands: 2,
           minHandDetectionConfidence: 0.6,

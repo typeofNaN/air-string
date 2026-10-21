@@ -10,7 +10,8 @@ export const CHORD_FREQUENCIES: Record<GuitarPosition, Array<number | null>> = {
 }
 
 export type PlayStyle = 'strum' | 'arpeggio'
-export const normalizeVolume = (value: number) => Math.min(1, Math.max(0, value))
+export const normalizeVolume = (value: number) =>
+  Math.min(1, Math.max(0, value))
 
 export class GuitarAudio {
   private context: AudioContext | null = null
@@ -30,7 +31,8 @@ export class GuitarAudio {
       frequencies.forEach((frequency, stringIndex) => {
         if (frequency === null) return
         const key = `${position}-${stringIndex}`
-        if (!this.buffers.has(key)) this.buffers.set(key, this.createPluckBuffer(frequency))
+        if (!this.buffers.has(key))
+          this.buffers.set(key, this.createPluckBuffer(frequency))
       })
     }
   }
@@ -38,13 +40,24 @@ export class GuitarAudio {
   setVolume(value: number): void {
     this.volume = normalizeVolume(value)
     if (this.context && this.master) {
-      this.master.gain.setTargetAtTime(this.volume, this.context.currentTime, 0.025)
+      this.master.gain.setTargetAtTime(
+        this.volume,
+        this.context.currentTime,
+        0.025,
+      )
     }
   }
 
-  play(position: GuitarPosition, direction: StrumDirection, style: PlayStyle = 'strum', tempo = 84): void {
+  play(
+    position: GuitarPosition,
+    direction: StrumDirection,
+    style: PlayStyle = 'strum',
+    tempo = 84,
+  ): void {
     if (!this.context || !this.master) return
-    const strings = CHORD_FREQUENCIES[position].flatMap((frequency, index) => frequency === null ? [] : [index])
+    const strings = CHORD_FREQUENCIES[position].flatMap((frequency, index) =>
+      frequency === null ? [] : [index],
+    )
     if (direction === 'UP') strings.reverse()
     strings.forEach((stringIndex, order) => {
       const source = this.context!.createBufferSource()

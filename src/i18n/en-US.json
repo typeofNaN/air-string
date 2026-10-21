@@ -35,24 +35,24 @@
   "tutorial.4": "In the right zone, make a fist then open your hand",
   "tutorial.note": "Position 6 uses 🤙: extend only your thumb and pinky.",
   "tutorial.close": "Got it",
-  "debug.title": "Tracking debug"
-  ,"chord.major": "major chord"
-  ,"chord.minor": "minor chord"
-  ,"control.strum": "Strum"
-  ,"control.arpeggio": "Arpeggio"
-  ,"control.tempo": "Tempo"
-  ,"control.volume": "Volume"
-  ,"control.auto": "Auto arpeggio"
-  ,"control.autoHint": "Repeat the current chord at the set tempo"
-  ,"practice.song": "Practice song"
-  ,"practice.play": "Start practice"
-  ,"practice.pause": "Pause practice"
-  ,"practice.restart": "Restart"
-  ,"practice.next": "Next chord"
-  ,"song.breeze": "Evening Breeze"
-  ,"song.road": "Open Road"
-  ,"song.glow": "Soft Glow"
-  ,"camera.connected": "Camera connected"
-  ,"camera.disconnected": "Waiting for camera"
-  ,"camera.playHint": "Close your hand, then open to play"
+  "debug.title": "Tracking debug",
+  "chord.major": "major chord",
+  "chord.minor": "minor chord",
+  "control.strum": "Strum",
+  "control.arpeggio": "Arpeggio",
+  "control.tempo": "Tempo",
+  "control.volume": "Volume",
+  "control.auto": "Auto arpeggio",
+  "control.autoHint": "Repeat the current chord at the set tempo",
+  "practice.song": "Practice song",
+  "practice.play": "Start practice",
+  "practice.pause": "Pause practice",
+  "practice.restart": "Restart",
+  "practice.next": "Next chord",
+  "song.breeze": "Evening Breeze",
+  "song.road": "Open Road",
+  "song.glow": "Soft Glow",
+  "camera.connected": "Camera connected",
+  "camera.disconnected": "Waiting for camera",
+  "camera.playHint": "Close your hand, then open to play"
 }

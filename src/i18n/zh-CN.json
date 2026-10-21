@@ -35,24 +35,24 @@
   "tutorial.4": "在画面右侧先握拳，再张开五指弹奏",
   "tutorial.note": "数字 6 使用 🤙 手势：只伸出拇指和小指。",
   "tutorial.close": "知道了",
-  "debug.title": "识别调试"
-  ,"chord.major": "大三和弦"
-  ,"chord.minor": "小三和弦"
-  ,"control.strum": "弹和弦"
-  ,"control.arpeggio": "自动分解"
-  ,"control.tempo": "速度"
-  ,"control.volume": "音量"
-  ,"control.auto": "自动分解和弦"
-  ,"control.autoHint": "按照速度循环弹奏当前和弦"
-  ,"practice.song": "示例练习"
-  ,"practice.play": "开始跟弹"
-  ,"practice.pause": "暂停跟弹"
-  ,"practice.restart": "重新开始"
-  ,"practice.next": "下一和弦"
-  ,"song.breeze": "晚风练习"
-  ,"song.road": "公路练习"
-  ,"song.glow": "柔光练习"
-  ,"camera.connected": "摄像头已连接"
-  ,"camera.disconnected": "等待摄像头"
-  ,"camera.playHint": "握拳后张开弹奏"
+  "debug.title": "识别调试",
+  "chord.major": "大三和弦",
+  "chord.minor": "小三和弦",
+  "control.strum": "弹和弦",
+  "control.arpeggio": "自动分解",
+  "control.tempo": "速度",
+  "control.volume": "音量",
+  "control.auto": "自动分解和弦",
+  "control.autoHint": "按照速度循环弹奏当前和弦",
+  "practice.song": "示例练习",
+  "practice.play": "开始跟弹",
+  "practice.pause": "暂停跟弹",
+  "practice.restart": "重新开始",
+  "practice.next": "下一和弦",
+  "song.breeze": "晚风练习",
+  "song.road": "公路练习",
+  "song.glow": "柔光练习",
+  "camera.connected": "摄像头已连接",
+  "camera.disconnected": "等待摄像头",
+  "camera.playHint": "握拳后张开弹奏"
 }

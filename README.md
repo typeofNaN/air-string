@@ -2,7 +2,7 @@
 
 AirString Studio 是一个运行在浏览器中的双手手势虚拟吉他。打开网页并授权摄像头后，用户可以在镜像画面的左侧选择和弦，通过右手“握拳后张开”完成拨弦，无需安装客户端或连接外部乐器。
 
-项目基于 MediaPipe Hand Landmarker、Web Audio API、React 与 TypeScript 构建。摄像头画面和手部关键点均在浏览器本地处理，不会由本应用上传。
+项目基于 MediaPipe Hand Landmarker、Web Audio API、React 与 TypeScript 构建，界面使用 Tailwind CSS 与 shadcn/ui 风格的 Radix UI 组件。摄像头画面和手部关键点均在浏览器本地处理，不会由本应用上传；模型、WASM 运行时和字体也随站点一起发布，不依赖境外 CDN。
 
 ## 功能亮点
 
@@ -98,6 +98,8 @@ pnpm preview
 - React 19
 - TypeScript（严格模式）
 - Vite 6
+- Tailwind CSS 3
+- shadcn/ui 组件架构（Radix UI、CVA、Tailwind Merge）
 - MediaPipe Tasks Vision / Hand Landmarker
 - Web Audio API
 - Lucide React
@@ -117,7 +119,11 @@ src/
 │   ├── mediapipe/       # 手势、左右区域与拨弦识别
 │   └── music/           # 和弦定义与练习数据
 ├── App.tsx              # 主应用状态与功能编排
-└── styles.css           # 全局视觉样式与响应式布局
+└── styles.css           # Tailwind 入口与少量全局基础规则
+
+public/mediapipe/
+├── models/              # 本地 Hand Landmarker 模型
+└── wasm/                # 本地 MediaPipe WASM 运行时
 ```
 
 ## 识别参数
@@ -128,7 +134,11 @@ src/
 src/config/gesture.ts
 ```
 
-默认推理上限为 30 FPS。MediaPipe 使用 GPU delegate，并从固定的 HTTPS 地址加载 WASM 运行时与官方 Hand Landmarker 模型。
+默认推理上限为 30 FPS。MediaPipe 使用 GPU delegate，并通过 `import.meta.env.BASE_URL` 从本站的 `public/mediapipe/` 加载 WASM 运行时与官方 Hand Landmarker 模型，因此同时兼容根路径部署和 GitHub Pages 的 `/air-string/` 子路径。
+
+模型与 WASM 会使生产包增加约 41 MB。部署时请完整上传 `dist/mediapipe/`，不要只上传 JavaScript 和 CSS 文件。
+
+仓库中的 `hand_landmarker.task` SHA-256 为 `fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1`，升级模型时应同步更新并重新验证该值。
 
 ## 调试
 
@@ -167,7 +177,7 @@ src/config/gesture.ts
 
 ## 隐私说明
 
-本应用直接在浏览器中完成摄像头帧和手部关键点分析。项目代码不包含上传、存储或发送摄像头画面的逻辑。第三方模型与运行时文件会通过 HTTPS 从 MediaPipe/Google 与 jsDelivr 提供的地址加载。
+本应用直接在浏览器中完成摄像头帧和手部关键点分析。项目代码不包含上传、存储或发送摄像头画面的逻辑。MediaPipe 模型、WASM 运行时和界面字体均由当前站点本地提供，不会在运行时请求 Google Storage、jsDelivr 或 Google Fonts。
 
 ## 许可证
 

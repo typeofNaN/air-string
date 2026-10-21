@@ -1,17 +1,33 @@
 import type { NormalizedLandmark } from '@mediapipe/tasks-vision'
 import type { FingerState } from '../../types/guitar'
 
-const distance = (a: NormalizedLandmark, b: NormalizedLandmark) => Math.hypot(a.x - b.x, a.y - b.y)
+const distance = (a: NormalizedLandmark, b: NormalizedLandmark) =>
+  Math.hypot(a.x - b.x, a.y - b.y)
 
-const angle = (a: NormalizedLandmark, vertex: NormalizedLandmark, c: NormalizedLandmark) => {
+const angle = (
+  a: NormalizedLandmark,
+  vertex: NormalizedLandmark,
+  c: NormalizedLandmark,
+) => {
   const ab = { x: a.x - vertex.x, y: a.y - vertex.y }
   const cb = { x: c.x - vertex.x, y: c.y - vertex.y }
-  const denominator = Math.max(Math.hypot(ab.x, ab.y) * Math.hypot(cb.x, cb.y), 0.0001)
-  const cosine = Math.min(1, Math.max(-1, (ab.x * cb.x + ab.y * cb.y) / denominator))
+  const denominator = Math.max(
+    Math.hypot(ab.x, ab.y) * Math.hypot(cb.x, cb.y),
+    0.0001,
+  )
+  const cosine = Math.min(
+    1,
+    Math.max(-1, (ab.x * cb.x + ab.y * cb.y) / denominator),
+  )
   return (Math.acos(cosine) * 180) / Math.PI
 }
 
-const fingerExtended = (points: NormalizedLandmark[], mcp: number, pip: number, tip: number) =>
+const fingerExtended = (
+  points: NormalizedLandmark[],
+  mcp: number,
+  pip: number,
+  tip: number,
+) =>
   angle(points[mcp], points[pip], points[tip]) > 150 &&
   distance(points[tip], points[0]) > distance(points[pip], points[0]) * 1.08
 

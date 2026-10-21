@@ -1,5 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react'
 import zh from './zh-CN.json'
 import en from './en-US.json'
 

@@ -11,7 +11,21 @@ describe('normalizeVolume', () => {
 
 describe('CHORD_FREQUENCIES', () => {
   it('uses playable guitar voicings and preserves muted strings', () => {
-    expect(CHORD_FREQUENCIES[1]).toEqual([null, 130.81, 164.81, 196, 261.63, 329.63])
-    expect(CHORD_FREQUENCIES[6]).toEqual([null, null, 146.83, 220, 293.66, 349.23])
+    expect(CHORD_FREQUENCIES[1]).toEqual([
+      null,
+      130.81,
+      164.81,
+      196,
+      261.63,
+      329.63,
+    ])
+    expect(CHORD_FREQUENCIES[6]).toEqual([
+      null,
+      null,
+      146.83,
+      220,
+      293.66,
+      349.23,
+    ])
   })
 })

@@ -3,7 +3,8 @@ import type { NormalizedLandmark } from '@mediapipe/tasks-vision'
 export type GuitarPosition = 1 | 2 | 3 | 4 | 5 | 6
 export type StrumDirection = 'UP' | 'DOWN'
 export type StrumState = 'OPEN' | 'MOVING' | 'COOLDOWN'
-export type AppStatus = 'idle' | 'requesting' | 'loading-model' | 'ready' | 'playing' | 'error'
+export type AppStatus =
+  'idle' | 'requesting' | 'loading-model' | 'ready' | 'playing' | 'error'
 
 export interface FingerState {
   thumb: boolean
